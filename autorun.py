@@ -30,6 +30,8 @@ if __name__ == "__main__":
             logging.error("Error starting thread for Strip_Routine: %s", str(e), exc_info=True)    
 
     except KeyboardInterrupt as k:
-            logging.error("Terminated via keyboard interrupt: %s", str(k))
+        logging.error("Terminated via keyboard interrupt")
+    except Exception as e:
+        logging.error("Error somewhere: %s", str(e), exc_info=True)  
 
 
