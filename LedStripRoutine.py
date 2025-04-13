@@ -22,12 +22,16 @@ class Strip_Routine(threading.Thread):
     
     
     def run(self):
-        i = 0
-        self.colorWipe(self.strip, Color(0, 0, 0), 10)
         while True:
-            print(i)
-            self.rainbowCycle(self.strip)
-            i += 1
+            try:
+                i = 0
+                self.colorWipe(self.strip, Color(0, 0, 0), 10)
+                while True:
+                    print(i)
+                    self.rainbowCycle(self.strip)
+                    i += 1
+            except:
+                time.sleep(1000)
 
     def rainbowCycle(self, strip, wait_ms=20, iterations=5):
         """Draw rainbow that uniformly distributes itself across all pixels."""
