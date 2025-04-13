@@ -2,6 +2,14 @@ import threading
 import time
 from rpi_ws281x import PixelStrip, Color
 import argparse
+import logging
+
+# Configure logging
+logging.basicConfig(
+    filename='/home/pi/prog/autorun/error_log.txt',  # Log file name
+    level=logging.ERROR,       # Log level
+    format='%(asctime)s - %(levelname)s - %(message)s'  # Log format
+)
 
 class Strip_Routine(threading.Thread):
     def __init__(self):
@@ -22,16 +30,16 @@ class Strip_Routine(threading.Thread):
     
     
     def run(self):
-        while True:
-            try:
-                i = 0
-                self.colorWipe(self.strip, Color(0, 0, 0), 10)
-                while True:
-                    print(i)
-                    self.rainbowCycle(self.strip)
-                    i += 1
-            except:
-                time.sleep(1000)
+        try:
+            i = 0
+            self.colorWipe(self.strip, Color(0, 0, 0), 10)
+            while True:
+                print(i)
+                self.rainbowCycle(self.strip)
+                i += 1
+        except Exception as e:
+            logging.error("Error in Strip_Routine Method run: %s", str(e), exc_info=True)
+
 
     def rainbowCycle(self, strip, wait_ms=20, iterations=5):
         """Draw rainbow that uniformly distributes itself across all pixels."""
