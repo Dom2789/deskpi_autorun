@@ -9,8 +9,9 @@ if __name__ == "__main__":
 
     DR = Display_Routine()
     NR = Network_Routine()
-    SR = Strip_Routine() 
     DR.start()
     NR.start()
+    sleep(5) 
+    SR = Strip_Routine() 
     SR.start()
 
