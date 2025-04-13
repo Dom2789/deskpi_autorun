@@ -3,6 +3,7 @@ import time
 from rpi_ws281x import PixelStrip, Color
 import argparse
 
+
 class Strip_Routine(threading.Thread):
     def __init__(self):
         super(Strip_Routine, self).__init__()
@@ -28,6 +29,7 @@ class Strip_Routine(threading.Thread):
             print(i)
             self.rainbowCycle(self.strip)
             i += 1
+
 
     def rainbowCycle(self, strip, wait_ms=20, iterations=5):
         """Draw rainbow that uniformly distributes itself across all pixels."""
