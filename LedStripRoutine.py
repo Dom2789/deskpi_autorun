@@ -11,6 +11,7 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s'  # Log format
 )
 
+
 class Strip_Routine(threading.Thread):
     def __init__(self):
         super(Strip_Routine, self).__init__()
@@ -39,6 +40,7 @@ class Strip_Routine(threading.Thread):
                 i += 1
         except Exception as e:
             logging.error("Error in Strip_Routine Method run: %s", str(e), exc_info=True)
+
 
 
     def rainbowCycle(self, strip, wait_ms=20, iterations=5):
