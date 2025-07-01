@@ -24,14 +24,17 @@ class Strip_Routine(threading.Thread):
     
     def run(self):
         i = 0
-        self.colorWipe(self.strip, Color(0, 0, 0), 10)
+        self.colorWipe(self.strip, Color(127, 127, 127), 10)
         while True:
             print(i)
-            self.rainbowCycle(self.strip)
+            #self.rainbowCycle(self.strip)
+            #self.theaterChase(self.strip, Color(127, 127, 127))  # White theater chase
+
             i += 1
 
 
 
+    """functions which create specific patterns"""
 
     def rainbowCycle(self, strip, wait_ms=20, iterations=5):
         """Draw rainbow that uniformly distributes itself across all pixels."""
@@ -55,9 +58,33 @@ class Strip_Routine(threading.Thread):
             return Color(0, pos * 3, 255 - pos * 3)
 
 
+    def theaterChase(self, strip, color, wait_ms=50, iterations=10):
+        """Movie theater light style chaser animation."""
+        for j in range(iterations):
+            for q in range(3):
+                for i in range(0, strip.numPixels(), 3):
+                    strip.setPixelColor(i + q, color)
+                strip.show()
+                time.sleep(wait_ms / 1000.0)
+                for i in range(0, strip.numPixels(), 3):
+                    strip.setPixelColor(i + q, 0)
+           
+
+    def theaterChase(self, strip, color, wait_ms=50, iterations=10):
+        """Movie theater light style chaser animation."""
+        for j in range(iterations):
+            for q in range(3):
+                for i in range(0, strip.numPixels(), 3):
+                    strip.setPixelColor(i + q, color)
+                strip.show()
+                time.sleep(wait_ms / 1000.0)
+                for i in range(0, strip.numPixels(), 3):
+                    strip.setPixelColor(i + q, 0)
+
+
     def colorWipe(self, strip, color, wait_ms=50):
         """Wipe color across display a pixel at a time."""
         for i in range(strip.numPixels()):
             strip.setPixelColor(i, color)
             strip.show()
-            time.sleep(wait_ms / 1000.0)        
+            time.sleep(wait_ms / 1000.0)       
