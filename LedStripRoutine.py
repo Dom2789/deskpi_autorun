@@ -13,7 +13,7 @@ class Strip_Routine(threading.Thread):
         # LED_PIN = 10        # GPIO pin connected to the pixels (10 uses SPI /dev/spidev0.0).
         LED_FREQ_HZ = 800000  # LED signal frequency in hertz (usually 800khz)
         LED_DMA = 10          # DMA channel to use for generating signal (try 10)
-        LED_BRIGHTNESS = 255  # Set to 0 for darkest and 255 for brightest
+        LED_BRIGHTNESS = 150  # Set to 0 for darkest and 255 for brightest
         LED_INVERT = False    # True to invert the signal (when using NPN transistor level shift)
         LED_CHANNEL = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
         # Create NeoPixel object with appropriate configuration.
@@ -24,14 +24,14 @@ class Strip_Routine(threading.Thread):
     
     def run(self):
         i = 0
-        self.colorWipe(self.strip, Color(127, 127, 127), 10)
+        self.colorWipe(self.strip, Color(5, 250, 227), 10)
+        """
         while True:
             print(i)
-            #self.rainbowCycle(self.strip)
-            #self.theaterChase(self.strip, Color(127, 127, 127))  # White theater chase
-
+            self.rainbowCycle(self.strip)
+            self.theaterChase(self.strip, Color(127, 127, 127))  # White theater chase
             i += 1
-
+        """
 
 
     """functions which create specific patterns"""
