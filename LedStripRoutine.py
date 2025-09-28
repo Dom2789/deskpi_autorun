@@ -16,7 +16,7 @@ class Strip_Routine(threading.Thread):
         LED_BRIGHTNESS = 150  # Set to 0 for darkest and 255 for brightest
         LED_INVERT = False    # True to invert the signal (when using NPN transistor level shift)
         LED_CHANNEL = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
-        self.COLOR = ((5, 250, 227), (52, 225, 235), (240, 3, 252)) # torquise, color not active clockpi, color active clockpi
+        self.COLOR = ((5, 250, 227), Color(52, 225, 235), Color(240, 3, 252)) # torquise, color not active clockpi, color active clockpi
         # Create NeoPixel object with appropriate configuration.
         self.strip = PixelStrip(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
         # Intialize the library (must be called once before other functions).
@@ -25,7 +25,7 @@ class Strip_Routine(threading.Thread):
     
     def run(self):
         i = 0
-        self.colorWipe(self.strip, self.COLOR[1], 10)
+        self.colorWipe(self.strip, self.COLOR[2], 10)
         """
         while True:
             print(i)
