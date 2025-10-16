@@ -36,7 +36,8 @@ class Network_Routine(threading.Thread):
                     # network without sleep sometimes too fast for clockpi to open port for listening in time
                     time.sleep(0.2)
                     s.sendto(string.encode("ascii"),("192.168.178.100", 4080))
-
+                elif trigger == "mini":
+                    s.sendto(string.encode("ascii"),("192.168.178.128", 4080))
             except socket.timeout:
                 timestamp = time.strftime("%H:%M:%S")
                 print(f"[{timestamp}] Timeout bei Anfrage")
